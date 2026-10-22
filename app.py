@@ -10,11 +10,10 @@ from pathlib import Path
 
 app = FastAPI(title="Text Summarizer App", description="Text Summarization using T5", version="1.0")
 
-BASE_DIR = Path(__file__).resolve().parent
-MODEL_DIR = BASE_DIR / "saved_summary_model"
+MODEL_ID = "abhishekgupta2232/text-summarizer-t5"
 
-model = T5ForConditionalGeneration.from_pretrained(str(MODEL_DIR))
-tokenizer = T5Tokenizer.from_pretrained(str(MODEL_DIR))
+model = T5ForConditionalGeneration.from_pretrained(MODEL_ID)
+tokenizer = T5Tokenizer.from_pretrained(MODEL_ID)
 
 # device
 if torch.backends.mps.is_available():
